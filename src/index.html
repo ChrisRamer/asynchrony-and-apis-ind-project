@@ -2,11 +2,39 @@
 <html lang="en-US">
 
 <head>
-	<title></title>
+	<title>Currency Exchanger</title>
+	<link href="css/styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	
+	<p></p>
+
+	<div class="center-align">
+		<!-- Exchange form -->
+		<div class="container">
+			<form id="currencyForm">
+				<div class="form-group">
+					<label for="amount">Amount:</label>
+					<input id="amount" class="form-control" type="number">
+				</div>
+				<div class="form-group">
+					<select class="form-control" id="currency">
+						<option>€ Euro (EUR)</option>
+						<option>¥ Yen (JPY)</option>
+						<option>£ Pound (GBP)</option>
+						<option>A$ Australian (AUD)</option>
+						<option>C$ Canadian (CAD)</option>
+						<option>Swiss (CHF)</option>
+					</select>
+				</div>
+			</form>
+		</div>
+
+		<!-- Output result -->
+		<div class="result">
+			<!-- TODO: Add result text -->
+		</div>
+	</div>
 </body>
 
 </html>
