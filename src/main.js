@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
-async function ConvertCurrency(currency) {
+async function ConvertCurrency(currency, amount) {
 	let promise = new Promise(function(resolve, reject) {
 		let request = new XMLHttpRequest();
 		const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`;
@@ -23,37 +23,39 @@ async function ConvertCurrency(currency) {
 
 	promise.then(function(response) {
 		const body = JSON.parse(response);
-		const outputStart = "USD -> " + currency + " = ";
+		let output = "USD -> " + currency + " = ";
 
 		switch(currency) {
 			case "EUR":
-				$("#result").text(outputStart + "€" + body.conversion_rates.EUR);
+				output += ("€" + (body.conversion_rates.EUR * amount).toFixed(2));
 				break;
 			case "JPY":
-				$("#result").text(outputStart + "¥" + body.conversion_rates.JPY);
+				output += ("¥" + (body.conversion_rates.JPY * amount).toFixed(2));
 				break;
 			case "GBP":
-				$("#result").text(outputStart + "£" + body.conversion_rates.GBP);
+				output += ("£" + (body.conversion_rates.GBP * amount).toFixed(2));
 				break;
 			case "AUD":
-				$("#result").text(outputStart + "$" + body.conversion_rates.AUD);
+				output += ("$" + (body.conversion_rates.AUD * amount).toFixed(2));
 				break;
 			case "CAD":
-				$("#result").text(outputStart + "$" + body.conversion_rates.CAD);
+				output += ("$" + (body.conversion_rates.CAD * amount).toFixed(2));
 				break;
 			case "CHF":
-				$("#result").text(outputStart + "$" + body.conversion_rates.CHF);
+				output += ("$" + (body.conversion_rates.CHF * amount).toFixed(2));
 				break;
 		}
 
+		$("#result").text(output);
 		$(".result").show();
 	});
 }
 
 function UpdateOutputText() {
-	const input = $("#currency").val();
-	const currency = input.substring(input.length - 4, input.length - 1);
-	ConvertCurrency(currency);
+	const amountInput = $("#amount").val();
+	const currencyInput = $("#currency").val();
+	const currency = currencyInput.substring(currencyInput.length - 4, currencyInput.length - 1);
+	ConvertCurrency(currency, amountInput);
 }
 
 $(document).ready(function () {
