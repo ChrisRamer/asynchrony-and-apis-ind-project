@@ -58,3 +58,14 @@ button[type="submit"] {
 	width: 20%;
 	margin-left: 40%;
 }
+
+.result {
+	display: none;
+	color:  rgb(91, 248, 99);
+	font-size: 200%;
+	border: 2px solid  rgb(91, 248, 99);
+	border-radius: 10px;
+	width: 25%;
+	margin-left: 37%;
+	margin-top: 1%;
+}
