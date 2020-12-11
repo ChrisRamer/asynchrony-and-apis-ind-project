@@ -12,6 +12,9 @@ async function ConvertCurrency(currency) {
 				resolve(request.response);
 			} else {
 				reject(request.response);
+				$(".result").hide();
+				$("#error").text(this.status);
+				$(".error").show();
 			}
 		}
 		request.open("GET", url,  true);

@@ -63,7 +63,17 @@ button[type="submit"] {
 	display: none;
 	color:  rgb(91, 248, 99);
 	font-size: 200%;
-	border: 2px solid  rgb(91, 248, 99);
+	border: 2px solid  rgb(66, 179, 71);
+	border-radius: 10px;
+	width: 25%;
+	margin-left: 37%;
+	margin-top: 1%;
+}
+
+.error {
+	display: none;
+	color:  rgb(187, 46, 46);
+	border: 2px solid  rgb(133, 43, 43);
 	border-radius: 10px;
 	width: 25%;
 	margin-left: 37%;
