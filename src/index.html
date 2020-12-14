@@ -24,6 +24,7 @@
 						<option>A$ Australian (AUD)</option>
 						<option>C$ Canadian (CAD)</option>
 						<option>Swiss (CHF)</option>
+						<option>Rupees (ZSR)</option>
 					</select>
 				</div>
 				<button type="submit" class="btn">Convert!</button>
@@ -32,8 +33,14 @@
 
 		<!-- Output result -->
 		<div class="result">
-			<p id="result"></p>
+			<p id="result" style="display:inline"></p>
 		</div>
+
+			<!-- Output result easter egg -->
+			<div class="result2">
+				<img id="rupee" width="10%" height="10%">
+				<p id="result2" style="display:inline"></p>
+			</div>
 
 		<!-- Output error -->
 		<div class="error">

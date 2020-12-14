@@ -59,7 +59,7 @@ button[type="submit"] {
 	margin-left: 40%;
 }
 
-.result {
+.result, .result2 {
 	display: none;
 	color:  rgb(91, 248, 99);
 	font-size: 200%;
