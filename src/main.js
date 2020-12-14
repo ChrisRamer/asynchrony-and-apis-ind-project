@@ -10,11 +10,14 @@ async function ConvertCurrency(currency, amount) {
 		request.onload = function() {
 			if (this.status === 200) {
 				resolve(request.response);
+
+				const body = JSON.parse(request.response);
+				if (body.result === "error") {
+					ShowError("API error: " + body["error-type"]);
+				}
 			} else {
 				reject(request.response);
-				$(".result").hide();
-				$("#error").text(this.status);
-				$(".error").show();
+				ShowError("API connection error: " + this.status);
 			}
 		}
 		request.open("GET", url,  true);
@@ -49,6 +52,12 @@ async function ConvertCurrency(currency, amount) {
 		$("#result").text(output);
 		$(".result").show();
 	});
+}
+
+function ShowError(text) {
+	$(".result").hide();
+	$("#error").text(text);
+	$(".error").show();
 }
 
 function UpdateOutputText() {
