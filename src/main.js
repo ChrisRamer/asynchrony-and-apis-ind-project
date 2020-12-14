@@ -19,7 +19,7 @@ async function ConvertCurrency(currency, amount) {
 				reject(request.response);
 				ShowError("API connection error: " + this.status);
 			}
-		}
+		};
 		request.open("GET", url,  true);
 		request.send();
 	});
@@ -49,6 +49,7 @@ async function ConvertCurrency(currency, amount) {
 				break;
 		}
 
+		$(".error").hide();
 		$("#result").text(output);
 		$(".result").show();
 	});
@@ -64,7 +65,12 @@ function UpdateOutputText() {
 	const amountInput = $("#amount").val();
 	const currencyInput = $("#currency").val();
 	const currency = currencyInput.substring(currencyInput.length - 4, currencyInput.length - 1);
-	ConvertCurrency(currency, amountInput);
+	if (amountInput > 0) {
+		ConvertCurrency(currency, amountInput);
+	}
+	else {
+		ShowError("Input error: USD amount must be greater than 0");
+	}
 }
 
 $(document).ready(function () {
