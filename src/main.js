@@ -26,37 +26,61 @@ async function ConvertCurrency(currency, amount) {
 
 	promise.then(function(response) {
 		const body = JSON.parse(response);
-		let output = "USD -> " + currency + " = ";
+		let output;
 
 		switch(currency) {
 			case "EUR":
-				output += ("€" + (body.conversion_rates.EUR * amount).toFixed(2));
+				output = ("€" + (body.conversion_rates.EUR * amount).toFixed(2));
+				ShowOutput(output, false);
 				break;
 			case "JPY":
-				output += ("¥" + (body.conversion_rates.JPY * amount).toFixed(2));
+				output = ("¥" + (body.conversion_rates.JPY * amount).toFixed(2));
+				ShowOutput(output, false);
 				break;
 			case "GBP":
-				output += ("£" + (body.conversion_rates.GBP * amount).toFixed(2));
+				output = ("£" + (body.conversion_rates.GBP * amount).toFixed(2));
+				ShowOutput(output, false);
 				break;
 			case "AUD":
-				output += ("$" + (body.conversion_rates.AUD * amount).toFixed(2));
+				output = ("$" + (body.conversion_rates.AUD * amount).toFixed(2));
+				ShowOutput(output, false);
 				break;
 			case "CAD":
-				output += ("$" + (body.conversion_rates.CAD * amount).toFixed(2));
+				output = ("$" + (body.conversion_rates.CAD * amount).toFixed(2));
+				ShowOutput(output, false);
 				break;
 			case "CHF":
-				output += ("$" + (body.conversion_rates.CHF * amount).toFixed(2));
+				output = ("$" + (body.conversion_rates.CHF * amount).toFixed(2));
+				ShowOutput(output, false);
+				break;
+			// Zelda Easter egg (ZSR stands for zeldaspeedruns)
+			case "ZSR":
+				document.getElementById("rupee").src = "assets/img/green.png";
+				output = "x" + (0.893 * amount).toFixed(2);
+				ShowOutput(output, true);
 				break;
 		}
-
-		$(".error").hide();
-		$("#result").text(output);
-		$(".result").show();
 	});
+}
+
+function ShowOutput(text, easteregg) {
+	$(".error").hide();
+	
+	if (easteregg) {
+		$(".result").hide();
+		$("#result2").text(text);
+		$(".result2").show();
+	}
+	else {
+		$(".result2").hide();
+		$("#result").text(text);
+		$(".result").show();
+	}
 }
 
 function ShowError(text) {
 	$(".result").hide();
+	$(".result2").hide();
 	$("#error").text(text);
 	$(".error").show();
 }
