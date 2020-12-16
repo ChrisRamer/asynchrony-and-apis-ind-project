@@ -10,9 +10,21 @@ A program that converts inputted USD amount to some of the most popular currenci
 
 ## Setup/Installation Requirements
 
+You must have Node package manager (npm) installed to run this app.
+
 Clone this repo to your desktop.
 
-Open the folder named *"asyncrhony-and-apis-ind-project"* and double click `index.html` to open it in your browser.
+Open the folder named *"asyncrhony-and-apis-ind-project"*.
+
+Open the folder in Visual Studio Code or an alternate IDE.
+
+Go to https://app.exchangerate-api.com/ and make an account. In your dashboard, copy the API Key, which is a string of random characters.
+
+Create a new file in the project named `.env` and in this folder, type "`API_KEY = `" followed by your API key.
+
+Open the terminal (view -> terminal) and with node, enter `npm install`  in the terminal to install the required packages for the app to run.
+
+Then enter `npm start` to start the app. This will open the app in your browser.
 
 ## Specs
 
